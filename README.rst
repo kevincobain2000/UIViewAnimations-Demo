@@ -1,5 +1,5 @@
 UIViewAnimations Demo
 =====================
 
-![My image](https://github.com/kevincobain2000/UIViewAnimations-Demo/blob/master/screenshot.png)
+![My image](kevincobain2000.github.com/UIViewAnimations-Demo/screenshot.png)
 
