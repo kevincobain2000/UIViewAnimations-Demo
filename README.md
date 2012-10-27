@@ -1,5 +1,5 @@
 UIViewAnimations Demo
 =====================
 
-![My image](http://i217.photobucket.com/albums/cc222/teetee8/showin-some-love.gif)
+![My image](http://www.jaist.ac.jp/~s1010205/images/uiViewAnimationScreenshot.png)
 
