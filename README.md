@@ -1,5 +1,5 @@
 UIViewAnimations Demo
 =====================
 
-![My image](http://www.jaist.ac.jp/~s1010205/images/uiViewAnimationScreenshot.png)
+![My image](http://www.jaist.ac.jp/~s1010205/images/uiViewAnimationsScreenshot.png)
 
