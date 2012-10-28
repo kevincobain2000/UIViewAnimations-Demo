@@ -16,6 +16,7 @@
 
 @implementation Animations
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -185,8 +186,6 @@
 
 
 + (void) shadowOnView: (UIView *) view andShadowType: (NSString *) shadowType{
-    //http://nachbaur.com/blog/fun-shadow-effects-using-custom-calayer-shadowpaths
-    
     CGSize size = view.bounds.size;
     if (shadowType == @"NoShadow"){
         view.layer.shadowColor = [UIColor clearColor].CGColor;
@@ -216,20 +215,33 @@
     }
     //Curl is not working !!
     else if (shadowType == @"Curl"){
-        CGFloat curlFactor = 30.0f;
-        CGFloat shadowDepth = 0.0f;
+        CGFloat offset = 10.0;
+        CGFloat curve = 5.0;
         UIBezierPath *path = [UIBezierPath bezierPath];
-        [path moveToPoint:CGPointMake(0.0f, 0.0f)];
-        [path addLineToPoint:CGPointMake(size.width, 0.0f)];
-        [path addLineToPoint:CGPointMake(size.width, size.height + shadowDepth)];
-        [path addCurveToPoint:CGPointMake(0.0f, size.height + shadowDepth)
-                controlPoint1:CGPointMake(size.width - curlFactor, size.height + shadowDepth - curlFactor)
-                controlPoint2:CGPointMake(curlFactor, size.height + shadowDepth - curlFactor)];
-        view.layer.shadowPath = path.CGPath;
         
+        CGRect rect = view.bounds;
+        CGPoint topLeft		 = rect.origin;
+        CGPoint bottomLeft	 = CGPointMake(0.0, CGRectGetHeight(rect)+offset);
+        CGPoint bottomMiddle = CGPointMake(CGRectGetWidth(rect)/2, CGRectGetHeight(rect)-curve);
+        CGPoint bottomRight	 = CGPointMake(CGRectGetWidth(rect), CGRectGetHeight(rect)+offset);
+        CGPoint topRight	 = CGPointMake(CGRectGetWidth(rect), 0.0);
+            
+        [path moveToPoint:topLeft];
+        [path addLineToPoint:bottomLeft];
+        [path addQuadCurveToPoint:bottomRight
+                         controlPoint:bottomMiddle];
+        [path addLineToPoint:topRight];
+        [path addLineToPoint:topLeft];
+        [path closePath];
+        view.layer.borderColor = [UIColor colorWithWhite:1.0 alpha:1.0].CGColor;
+        view.layer.borderWidth = 5.0;
+        view.layer.shadowOffset = CGSizeMake(0, 3);
+        view.layer.shadowOpacity = 0.7;
+        view.layer.shouldRasterize = YES;
+        view.layer.shadowPath = path.CGPath;
+            
     }
-    
+        
 }
-
-
+    
 @end

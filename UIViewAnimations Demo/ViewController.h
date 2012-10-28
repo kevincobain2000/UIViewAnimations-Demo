@@ -13,6 +13,7 @@
     NSArray *tableDetails;
 }
 - (void)doAnimations:(NSString *) choice;
+
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIButton *resetButton;
 @property (strong, nonatomic) IBOutlet UILabel *labelReset;

@@ -24,8 +24,6 @@
     self.labelReset.shadowColor   = [UIColor grayColor];
     self.labelReset.shadowOffset  = CGSizeMake(-1.0,-1.0);
     
-
-    
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"ipad-BG-pattern.png"] drawInRect:self.view.bounds];
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -34,14 +32,13 @@
     tableData = [[NSArray alloc] initWithObjects:@"Zoom in", @"Fade in",
                  @"Fade out", @"Move down", @"Move up", @"Move left", @"Move right",
                  @"Bounce down", @"Bounce up",@"Shadow Trapezoidal",
-                 @"Shadow Elliptical", @"Frame and Shadow", @"Rotate", @"Rotate and Fade in",
+                 @"Shadow Elliptical", @"Shadow Curl",@"Frame and Shadow", @"Rotate", @"Rotate and Fade in",
                  nil];
     
     tableDetails = [[NSArray alloc] initWithObjects:@"Zoom in the image", @"Fade in the image",
-                    @"Fade out the image", @"Move the image down 100pts", @"Move the image up 100pts", @"Move the image to the left 100pts", @"Move the image to the right 100pts", @"Bouncy effect",
-                    @"Bounce up effect",
+                    @"Fade out the image", @"Move the image down 100pts", @"Move the image up 100pts", @"Move the image to the left 100pts", @"Move the image to the right 100pts", @"Bouncy effect", @"Bounce up effect",
                     @"Puts Trapezoidal shadow on image", @"Puts Elliptical shadow on image",
-                    @"Puts a White Frame on the Image", @"Rotate 20 Degrees", @"2 Actions Together",
+                    @"Puts a Curl Shadow", @"Puts a White Frame on the Image", @"Rotate 20 Degrees", @"2 Actions Together",
                     nil];
 }
 
@@ -129,6 +126,9 @@
     if ([choice isEqualToString:@"Shadow Elliptical"]){
         [Animations shadowOnView:self.imageView andShadowType:@"Elliptical"];
     }
+    if ([choice isEqualToString:@"Shadow Curl"]){
+        [Animations shadowOnView:self.imageView andShadowType:@"Curl"];
+    }
     if ([choice isEqualToString:@"Frame and Shadow"]){
         [Animations frameAndShadow:self.imageView];
     
@@ -140,11 +140,10 @@
     if ([choice isEqualToString:@"Rotate and Fade in"]){
         [Animations rotate:self.imageView andAnimationDuration:2.0 andWait:NO andAngle:340];
         [Animations fadeIn:self.imageView andAnimationDuration:2.0 andWait:YES];
-        
-        
     }
     
 }
+
 
 - (IBAction)resetPressed:(id)sender {
     self.imageView.alpha = 1.0;
